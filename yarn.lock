@@ -19,6 +19,21 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@babylonjs/core@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-7.2.0.tgz#0d2a8b1c3793878a7b48781955f0bf217dabdc08"
+  integrity sha512-zfhC+Cdd/ttms2wYLMkpQvKOF+9B4iydzmptvp2QMCqz+cpAO3vwz3yCAx2I3jBGVXJ+JwC6XgRSY/sUaaFtow==
+
+"@babylonjs/gui@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-7.2.0.tgz#d01dfd8bf371c657ebd52d86a5e8611a65a51a8d"
+  integrity sha512-tcshOJe1nmMB7vs/a6KlnuiY4ZlPxwRQGRhAMMeWdBRCeNCPddxnIfsw+FKRB1AFnatwXbHtTzh0Ykkv3M0Trw==
+
+"@babylonjs/loaders@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-7.2.0.tgz#5b685258e5c24a044bf88f8121a225725ac0e1a9"
+  integrity sha512-HcLQbuJTrcnEIbfPctsQoPQVDT6pblZusb+TUfxw0Q1CPIw6atxa6plmqIdbQClX0B82Roi8+UmpfLBKc/mWTg==
+
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -503,6 +518,11 @@ axobject-query@^3.2.1:
   integrity sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==
   dependencies:
     dequal "^2.0.3"
+
+babylonjs-hook@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/babylonjs-hook/-/babylonjs-hook-0.1.1.tgz#9c1acc0fbe346b51f2c0a24cf5dbaf42aeb4e5a0"
+  integrity sha512-uLcaX08NJy/1DeI+3GNQWQ2lQazhCR4U4jC6V+xy9rEvCCeFml3EWlwEwZv+8+oSHnMMV761jeQGjn9dVzgfMQ==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -2138,6 +2158,13 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-babylonjs@^3.1.30:
+  version "3.1.30"
+  resolved "https://registry.yarnpkg.com/react-babylonjs/-/react-babylonjs-3.1.30.tgz#e0e5b9e16ff9b25751edfe980c4c7212bf2673f4"
+  integrity sha512-qALWc/2AjxxIvWreDEoXYMwc/gycttOa6PvmrFVhSX5bG40hOT/jnOjg0VfZ8tDdd/iNI2r6GFS9YynUug4WHg==
+  dependencies:
+    react-reconciler "^0.27.0"
+
 react-dom@^18:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -2150,6 +2177,14 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-reconciler@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.27.0.tgz#360124fdf2d76447c7491ee5f0e04503ed9acf5b"
+  integrity sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.21.0"
 
 react@^18:
   version "18.2.0"
@@ -2265,6 +2300,13 @@ safe-regex-test@^1.0.3:
     call-bind "^1.0.6"
     es-errors "^1.3.0"
     is-regex "^1.1.4"
+
+scheduler@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
+  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
+  dependencies:
+    loose-envify "^1.1.0"
 
 scheduler@^0.23.0:
   version "0.23.0"
