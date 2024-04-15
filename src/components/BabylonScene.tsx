@@ -10,6 +10,7 @@ import {
   Vector3,
   ArcRotateCamera,
   UniversalCamera,
+  FollowCamera,
   SceneLoader,
   MeshBuilder,
   AbstractMesh,
@@ -19,13 +20,13 @@ import {
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
 
-interface CanvasProps {
-  canvasRef: RefObject<HTMLCanvasElement>;
-}
+// interface CanvasProps {
+//   canvasRef: RefObject<HTMLCanvasElement>;
+// }
 
-const Canvas = ({ canvasRef }: CanvasProps) => {
-  return <canvas ref={canvasRef} style={{ width: "100vw", height: "100vh" }} />;
-};
+// const Canvas = ({ canvasRef }: CanvasProps) => {
+//   return <canvas ref={canvasRef} style={{ width: "100vw", height: "100vh" }} />;
+// };
 
 export const BabylonScene = memo(function BabylonScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -94,7 +95,8 @@ export const BabylonScene = memo(function BabylonScene() {
       const importCar = async () => {
         const result = await SceneLoader.ImportMeshAsync(
           "",
-          "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+          // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+          "model/",
           "Car.glb",
           scene,
           undefined,
@@ -109,6 +111,8 @@ export const BabylonScene = memo(function BabylonScene() {
         tireL4 = result.meshes[7];
         tireR3 = result.meshes[8];
         tireR4 = result.meshes[9];
+        car.position = new Vector3(0, 8, 0);
+        car.scaling = new Vector3(10, 10, 10);
       };
 
       importCar();
@@ -118,14 +122,15 @@ export const BabylonScene = memo(function BabylonScene() {
       const importCity = async () => {
         const result = await SceneLoader.ImportMeshAsync(
           "",
-          "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
-          "city.glb",
+          // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+          "model/",
+          "London.glb",
           scene,
           undefined,
           ".glb"
         );
         city = result.meshes[0];
-        city.scaling = new Vector3(5, 5, 5);
+        city.scaling = new Vector3(1, 1, 1);
 
         if (car?.position) {
           camera.position = car?.position;
@@ -220,11 +225,11 @@ export const BabylonScene = memo(function BabylonScene() {
         "camera",
         0,
         0,
-        10,
+        0,
         Vector3.Zero(),
         scene
       );
-      camera.position = new Vector3(0, 5, 10);
+
       camera.attachControl(canvasRef.current, true);
 
       engine.runRenderLoop(() => {
@@ -238,5 +243,5 @@ export const BabylonScene = memo(function BabylonScene() {
     }
   }, [screenSize]);
 
-  return <Canvas canvasRef={canvasRef} />;
+  return <canvas ref={canvasRef} style={{ width: "100vw", height: "100vh" }} />;
 });
