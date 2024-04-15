@@ -199,24 +199,24 @@ export const BabylonScene = memo(function BabylonScene() {
         // Rotate the tires when the car is moving
         if (speed !== 0) {
           const tireRotationSpeed = 0.1; // Rotation speed of tires
-          tireL1?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireL2?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireR1?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireR2?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireL3?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireL4?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireR3?.rotate(Vector3.Up(), tireRotationSpeed);
-          tireR4?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireL1?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireL2?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireR1?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireR2?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireL3?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireL4?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireR3?.rotate(Vector3.Up(), tireRotationSpeed);
+          // tireR4?.rotate(Vector3.Up(), tireRotationSpeed);
         } else {
           // Reset tire rotation when the car is not moving
-          tireL1?.rotation.set(0, 0, 0);
-          tireL2?.rotation.set(0, 0, 0);
-          tireR1?.rotation.set(0, 0, 0);
-          tireR2?.rotation.set(0, 0, 0);
-          tireL3?.rotation.set(0, 0, 0);
-          tireL4?.rotation.set(0, 0, 0);
-          tireR3?.rotation.set(0, 0, 0);
-          tireR4?.rotation.set(0, 0, 0);
+          // tireL1?.rotation.set(0, 0, 0);
+          // tireL2?.rotation.set(0, 0, 0);
+          // tireR1?.rotation.set(0, 0, 0);
+          // tireR2?.rotation.set(0, 0, 0);
+          // tireL3?.rotation.set(0, 0, 0);
+          // tireL4?.rotation.set(0, 0, 0);
+          // tireR3?.rotation.set(0, 0, 0);
+          // tireR4?.rotation.set(0, 0, 0);
         }
       });
 
