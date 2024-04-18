@@ -51,7 +51,7 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     var camera = new UniversalCamera("MyCamera", new Vector3(0, 1, 0), scene);
     camera.minZ = 0.0001;
     camera.attachControl(canvasRef.current, true);
-    camera.speed = 0.02;
+    camera.speed = 0.2;
     camera.angularSpeed = 0.05;
     camera.angle = Math.PI / 2;
     camera.direction = new Vector3(
@@ -127,21 +127,21 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     _____________________*/
 
     //Ground
-    var ground = MeshBuilder.CreateGround(
-      "ground",
-      { width: 20, height: 20 },
-      scene
-    );
-    ground.material = new StandardMaterial("groundMat", scene);
-    ground.material.diffuseColor = new Color3(1, 1, 1);
-    ground.material.backFaceCulling = false;
+    // var ground = MeshBuilder.CreateGround(
+    //   "ground",
+    //   { width: 20, height: 20 },
+    //   scene
+    // );
+    // ground.material = new StandardMaterial("groundMat", scene);
+    // ground.material.diffuseColor = new Color3(1, 1, 1);
+    // ground.material.backFaceCulling = false;
 
-    var lowerGround = ground.clone("lowerGround");
-    lowerGround.scaling.x = 4;
-    lowerGround.scaling.z = 4;
-    lowerGround.position.y = -16;
-    lowerGround.material = ground.material.clone("lowerMat");
-    lowerGround.material.diffuseColor = new Color3(0, 1, 0);
+    // var lowerGround = ground.clone("lowerGround");
+    // lowerGround.scaling.x = 4;
+    // lowerGround.scaling.z = 4;
+    // lowerGround.position.y = -16;
+    // lowerGround.material = ground.material.clone("lowerMat");
+    // lowerGround.material.diffuseColor = new Color3(0, 1, 0);
 
     var randomNumber = function (min, max) {
       if (min == max) {
@@ -151,46 +151,46 @@ export const BabylonScene3 = memo(function BabylonScene3() {
       return random * (max - min) + min;
     };
 
-    var box = new MeshBuilder.CreateBox("crate", { size: 2 }, scene);
-    box.material = new StandardMaterial("Mat", scene);
-    box.material.diffuseTexture = new Texture("texture/texture1.webp", scene);
-    box.checkCollisions = true;
+    // var box = new MeshBuilder.CreateBox("crate", { size: 2 }, scene);
+    // box.material = new StandardMaterial("Mat", scene);
+    // box.material.diffuseTexture = new Texture("texture/texture1.webp", scene);
+    // box.checkCollisions = true;
 
-    var boxNb = 6;
-    var theta = 0;
-    var radius = 6;
-    box.position = new Vector3(
-      (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
-        Math.cos(theta + randomNumber(-0.1 * theta, 0.1 * theta)),
-      1,
-      (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
-        Math.sin(theta + randomNumber(-0.1 * theta, 0.1 * theta))
-    );
+    // var boxNb = 6;
+    // var theta = 0;
+    // var radius = 6;
+    // box.position = new Vector3(
+    //   (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
+    //     Math.cos(theta + randomNumber(-0.1 * theta, 0.1 * theta)),
+    //   1,
+    //   (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
+    //     Math.sin(theta + randomNumber(-0.1 * theta, 0.1 * theta))
+    // );
 
-    var boxes = [box];
-    for (var i = 1; i < boxNb; i++) {
-      theta += (2 * Math.PI) / boxNb;
-      var newBox = box.clone("box" + i);
-      boxes.push(newBox);
-      newBox.position = new Vector3(
-        (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
-          Math.cos(theta + randomNumber(-0.1 * theta, 0.1 * theta)),
-        1,
-        (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
-          Math.sin(theta + randomNumber(-0.1 * theta, 0.1 * theta))
-      );
-    }
+    // var boxes = [box];
+    // for (var i = 1; i < boxNb; i++) {
+    //   theta += (2 * Math.PI) / boxNb;
+    //   var newBox = box.clone("box" + i);
+    //   boxes.push(newBox);
+    //   newBox.position = new Vector3(
+    //     (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
+    //       Math.cos(theta + randomNumber(-0.1 * theta, 0.1 * theta)),
+    //     1,
+    //     (radius + randomNumber(-0.5 * radius, 0.5 * radius)) *
+    //       Math.sin(theta + randomNumber(-0.1 * theta, 0.1 * theta))
+    //   );
+    // }
     /* End Create Scenery */
 
     //Gravity and Collisions Enabled
     scene.gravity = new Vector3(0, -0.9, 0);
     scene.collisionsEnabled = true;
 
-    camera.checkCollisions = true;
-    camera.applyGravity = true;
+    // camera.checkCollisions = true;
+    // camera.applyGravity = true;
 
-    ground.checkCollisions = true;
-    lowerGround.checkCollisions = true;
+    // ground.checkCollisions = true;
+    // lowerGround.checkCollisions = true;
 
     camera.ellipsoid = new Vector3(0.5, 1, 0.5);
     camera.ellipsoidOffset = new Vector3(0, 1, 0);
@@ -214,27 +214,28 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     //   ellipse[i].rotation.y = (5 * Math.PI) / 16 + (i * Math.PI) / 16;
     // }
 
-    // let city;
-    // const importCity = async () => {
-    //   const result = await SceneLoader.ImportMeshAsync(
-    //     "",
-    //     // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
-    //     "model/",
-    //     "London.glb",
-    //     scene,
-    //     undefined,
-    //     ".glb"
-    //   );
-    //   city = result.meshes[0];
-    //   city.scaling = new Vector3(1, 1, 1);
-    //   city.checkCollisions = true;
+    let city;
+    const importCity = async () => {
+      const result = await SceneLoader.ImportMeshAsync(
+        "",
+        // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+        "model/",
+        "London.glb",
+        scene,
+        undefined,
+        ".glb"
+      );
+      city = result.meshes[0];
+      city.position = new Vector3(0, -100, 0);
+      city.scaling = new Vector3(1, 1, 1);
+      city.checkCollisions = true;
 
-    //   if (car?.position) {
-    //     camera.position = car?.position;
-    //   }
-    // };
+      // if (car?.position) {
+      //   camera.position = car?.position;
+      // }
+    };
 
-    // importCity();
+    importCity();
 
     /* New Input Management for Camera
     __________________________________*/
