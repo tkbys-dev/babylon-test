@@ -14,6 +14,7 @@ import {
   DirectionalLight,
   Viewport,
   Texture,
+  SceneLoader,
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
 
@@ -77,13 +78,50 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     viewCamera.viewport = new Viewport(0, 0, 1.0, 0.5);
 
     //Dummy camera as cone
-    var cone = MeshBuilder.CreateCylinder(
-      "dummyCamera",
-      { diameterTop: 0.01, diameterBottom: 0.2, height: 0.2 },
-      scene
-    );
-    cone.parent = camera;
-    cone.rotation.x = Math.PI / 2;
+    // var cone = MeshBuilder.CreateCylinder(
+    //   "dummyCamera",
+    //   { diameterTop: 0.01, diameterBottom: 0.2, height: 0.2 },
+    //   scene
+    // );
+    // cone.parent = camera;
+    // cone.rotation.x = Math.PI / 2;
+
+    let car;
+    let tireL1;
+    let tireL2;
+    let tireR1;
+    let tireR2;
+    let tireL3;
+    let tireL4;
+    let tireR3;
+    let tireR4;
+
+    const importCar = async () => {
+      const result = await SceneLoader.ImportMeshAsync(
+        "",
+        // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+        "model/",
+        "Car.glb",
+        scene,
+        undefined,
+        ".glb"
+      );
+      car = result.meshes[0]; // Values from 6 are for the tyres
+      tireL1 = result.meshes[6];
+      tireL2 = result.meshes[7];
+      tireR1 = result.meshes[8];
+      tireR2 = result.meshes[9];
+      tireL3 = result.meshes[6];
+      tireL4 = result.meshes[7];
+      tireR3 = result.meshes[8];
+      tireR4 = result.meshes[9];
+      // car.position = new Vector3(0, 8, 0);
+      // car.scaling = new Vector3(10, 10, 10);
+      car.parent = camera;
+      car.checkCollisions = true;
+    };
+
+    importCar();
 
     /* Set Up Scenery
     _____________________*/
@@ -115,7 +153,7 @@ export const BabylonScene3 = memo(function BabylonScene3() {
 
     var box = new MeshBuilder.CreateBox("crate", { size: 2 }, scene);
     box.material = new StandardMaterial("Mat", scene);
-    box.material.diffuseTexture = new Texture("textures/crate.png", scene);
+    box.material.diffuseTexture = new Texture("texture/texture1.webp", scene);
     box.checkCollisions = true;
 
     var boxNb = 6;
@@ -158,23 +196,45 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     camera.ellipsoidOffset = new Vector3(0, 1, 0);
 
     //Create Visible Ellipsoid around camera
-    var a = 0.5;
-    var b = 1;
-    var points = [];
-    for (var theta = -Math.PI / 2; theta < Math.PI / 2; theta += Math.PI / 36) {
-      points.push(new Vector3(0, b * Math.sin(theta), a * Math.cos(theta)));
-    }
+    // var a = 0.5;
+    // var b = 1;
+    // var points = [];
+    // for (var theta = -Math.PI / 2; theta < Math.PI / 2; theta += Math.PI / 36) {
+    //   points.push(new Vector3(0, b * Math.sin(theta), a * Math.cos(theta)));
+    // }
 
-    var ellipse = [];
-    ellipse[0] = MeshBuilder.CreateLines("e", { points: points }, scene);
-    ellipse[0].color = Color3.Red();
-    ellipse[0].parent = camera;
-    ellipse[0].rotation.y = (5 * Math.PI) / 16;
-    for (var i = 1; i < 23; i++) {
-      ellipse[i] = ellipse[0].clone("el" + i);
-      ellipse[i].parent = camera;
-      ellipse[i].rotation.y = (5 * Math.PI) / 16 + (i * Math.PI) / 16;
-    }
+    // var ellipse = [];
+    // ellipse[0] = MeshBuilder.CreateLines("e", { points: points }, scene);
+    // ellipse[0].color = Color3.Red();
+    // ellipse[0].parent = camera;
+    // ellipse[0].rotation.y = (5 * Math.PI) / 16;
+    // for (var i = 1; i < 23; i++) {
+    //   ellipse[i] = ellipse[0].clone("el" + i);
+    //   ellipse[i].parent = camera;
+    //   ellipse[i].rotation.y = (5 * Math.PI) / 16 + (i * Math.PI) / 16;
+    // }
+
+    // let city;
+    // const importCity = async () => {
+    //   const result = await SceneLoader.ImportMeshAsync(
+    //     "",
+    //     // "https://raw.githubusercontent.com/UttejK/BabulonjsCarGame/main/public/",
+    //     "model/",
+    //     "London.glb",
+    //     scene,
+    //     undefined,
+    //     ".glb"
+    //   );
+    //   city = result.meshes[0];
+    //   city.scaling = new Vector3(1, 1, 1);
+    //   city.checkCollisions = true;
+
+    //   if (car?.position) {
+    //     camera.position = car?.position;
+    //   }
+    // };
+
+    // importCity();
 
     /* New Input Management for Camera
     __________________________________*/
