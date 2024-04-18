@@ -61,21 +61,21 @@ export const BabylonScene3 = memo(function BabylonScene3() {
     );
 
     //Add viewCamera that gives first person shooter view
-    var viewCamera = new UniversalCamera(
-      "viewCamera",
-      new Vector3(0, 3, -3),
-      scene
-    );
-    viewCamera.parent = camera;
-    viewCamera.setTarget(new Vector3(0, -0.0001, 1));
+    // var viewCamera = new UniversalCamera(
+    //   "viewCamera",
+    //   new Vector3(0, 3, -3),
+    //   scene
+    // );
+    // viewCamera.parent = camera;
+    // viewCamera.setTarget(new Vector3(0, -0.0001, 1));
 
     //Activate both cameras
-    scene.activeCameras.push(viewCamera);
+    // scene.activeCameras.push(viewCamera);
     scene.activeCameras.push(camera);
 
     //Add two viewports
-    camera.viewport = new Viewport(0, 0.5, 1.0, 0.5);
-    viewCamera.viewport = new Viewport(0, 0, 1.0, 0.5);
+    // camera.viewport = new Viewport(0, 0.5, 1.0, 0.5);
+    // viewCamera.viewport = new Viewport(0, 0, 1.0, 0.5);
 
     //Dummy camera as cone
     // var cone = MeshBuilder.CreateCylinder(
